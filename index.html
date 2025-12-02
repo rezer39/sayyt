@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/reset.css">
+    <link rel="stylesheet" href="/style..css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<div class="head">
+    <img class="im" src="/photo/photo_2025-11-21_23-16-36.jpg" alt="">
+</div>
+
+<div class="products-container">
+
+    <div class="kidcard jacket">
+        <img src="/photo/2sl.webp" class="kidimg">
+        <h2 class="kidtitle">Дитяча зимова стьобана куртка Nike</h2>
+        <p class="kidprice">5 099 ₴</p>
+        <p class="kiddesc">
+            Зимова стьобана куртка Nike поєднує стильний дизайн і надійний захист від холоду. Утеплена модель зберігає тепло навіть у морозну погоду.
+        </p>
+        <button class="kidtgl">Опис товару</button>
+        <button class="kidbuy">Купить</button>
+    </div>
+
+    <div class="kidcard pants">
+        <img src="/photo/Br1.webp" class="kidimg">
+        <h2 class="kidtitle">Теплі спортивні штани Nike</h2>
+        <div class="kidprices">
+            <p class="kidold">2 499 ₴</p>
+            <p class="kidprice">1 799 ₴</p>
+        </div>
+        <p class="kiddesc">Універсальні штани Nike забезпечують комфорт під час носіння.</p>
+        <button class="kidtgl">Показати опис</button>
+        <button class="kidbuy">Купить</button>
+    </div>
+
+    <div class="kidcard hoodie">
+        <img src="/photo/517070508.webp" class="kidimg">
+        <h2 class="kidtitle">Підліткова тепла худі Nike</h2>
+        <div class="kidprices">
+            <p class="kidold">1 999 ₴</p>
+            <p class="kidprice">1 299 ₴</p>
+        </div>
+        <p class="kiddesc">М'яка тепла худі для повсякденного стилю і комфорту.</p>
+        <button class="kidtgl">Показати опис</button>
+        <button class="kidbuy">Купить</button>
+    </div>
+
+    <div class="kidcard tshirt">
+        <img src="/photo/teshr.webp" class="kidimg">
+        <h2 class="kidtitle">Фірмова футболка Nike</h2>
+        <div class="kidprices">
+            <p class="kidold">3475 ₴</p>
+            <p class="kidprice">1770 ₴</p>
+        </div>
+        <p class="kiddesc">Легка та зручна футболка з якісної бавовни.</p>
+        <button class="kidtgl">Показати опис</button>
+        <button class="kidbuy">Купить</button>
+    </div>
+
+</div>
+
+<script>
+
+const buttons = document.querySelectorAll('.kidtgl');
+buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const desc = btn.previousElementSibling;
+        if (desc.style.display === "block") {
+            desc.style.display = "none";
+            btn.textContent = "Опис";
+        } else {
+            desc.style.display = "block";
+            btn.textContent = "Закрити опис";
+        }
+    });
+});
+
+const buyBtns = document.querySelectorAll('.kidbuy');
+buyBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const card = btn.closest('.kidcard');
+
+        let msg = card.querySelector('.kidmsg');
+        if (!msg) {
+            msg = document.createElement('div');
+            msg.className = 'kidmsg';
+            card.appendChild(msg);
+        }
+
+        msg.textContent = "немає в наявності але можна хорошу оцінку";
+        msg.style.display = "inline-block";
+        msg.style.opacity = "1";
+
+        clearTimeout(msg.hideTimer);
+        msg.hideTimer = setTimeout(() => {
+            msg.style.opacity = "0";
+            setTimeout(() => {
+                msg.style.display = "none";
+            }, 200);
+        }, 2500);
+    });
+});
+
+</script>
+
+</body>
+</html>
